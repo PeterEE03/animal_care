@@ -1,82 +1,108 @@
 @extends('layouts.master')
-
+<link rel="stylesheet" href="<?php echo asset('css/f3.css'); ?>" type="text/css">
+<script src="{{ asset('js/Jsmiembro.js') }}"></script>
 @section('content')
-<div id="layoutSidenav_content">
-    <main>  
-        <div class="container-fluid px-4">
-            <div class="container w-40 border p-4 mt-4">
-                <form>
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Nombre</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Rocky">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Direccion de permanencia</label>
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="Col.San Luis, pasaje #3">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Fecha de nacimiento o estimada</label>
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="dd/mm/yyyy">
-                            </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4 py-4">
+                <div style=" width: 100%;display: flex;align-items: center;justify-content: space-between;">
+                    <h1>Animales</h1>
+                    {{-- <button class="btn button-pri">
+                        <i class="fas fa-plus"></i>
+                        <span class="lable">Agregar nuevo registro</span>
+                    </button> --}}
+                </div>
+                <div class="row mt-3">
+                    <div class="col-xl-7">
+                        <table>
+                            <thead>
+                                <tr class="head">
+                                    <th></th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Edad</th>
+                                    <th>Sexo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
+                                            alt="user" class="picture" />
+                                    </td>
+                                    <td>John</td>
+                                    <td>Doe</td>
+                                    <td>25</td>
+                                    <td>Masculino</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="card  mb-4" style="border:none; padding-bottom: 25px !important; width: 100%">
+                            <h3 style="padding: -5px 0px !important;">Nuevo Registro</h3>
+                            <form action="post">
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <div class="inputContainer">
+                                            <input required="required" id="nombre" class="inputField"
+                                                placeholder="Nombres" type="text" autocomplete="false">
+                                            <label class="inputFieldLabel" for="nombre">Nombre del miembro</label>
+                                            <i class="inputFieldIcon fas fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="inputContainer">
+                                            <input required="required" id="fecha" class="inputField"
+                                                autocomplete="false" placeholder="Apellidos" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="inputContainer">
+                                    <input required="required" id="fecha" class="inputField" autocomplete="false"
+                                        placeholder="Correo" type="email">
+                                    <label class="inputFieldLabel" for="fecha">Correo</label>
+                                    <i class="inputFieldIcon fas fa-envelope"></i>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <div class="inputContainer" id="telefono-container">
+                                            <input class="inputField" type="tel" class="form-control telefono"
+                                                maxlength="9" placeholder="9999-9999" name="telefonos[]"
+                                                oninput="formatPhoneNumber(this)"
+                                                onkeydown="return restrictToNumbers(event)">
+                                            <label class="inputFieldLabel" for="fecha">Telefono</label>
+                                            <i class="inputFieldIcon fas fa-phone"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <button type="button" class="button button-pri" id="add-telefono">
+                                            <i class="svg-icon fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; align-items: flex-end; gap: 10px; justify-content: center">
+                                    <button type="reset" class="button button-sec">
+                                        <i class="svg-icon fas fa-rotate-right"></i>
+                                        <span class="lable">Cancelar</span>
+                                    </button>
+                                    <button type="submit" class="button button-pri">
+                                        <i class="svg-icon fa-regular fa-floppy-disk"></i>
+                                        <span class="lable">Guardar</span>
+                                    </button>
+                                </div>
                         </div>
-            
-                        <div class="form-row">
-                            <div class="form-group col-md-4 $purple-700">
-                                <label for="inputState">Raza</label>
-                                <select id="inputState" class="form-control">
-                                    <option selected>Seleccione...</option>
-                                    <option>Chiguagua</option>
-                                    <option>Dalmata</option>
-                                    <option>Pitbull</option>
-                                    <option>Mestizo</option>
-                                </select>
-                            </div>
-            
-                        </div>
-                        <div class="form-group col-md-6">
-                            <div class="form-check">
-            
-                                <label class="form-check-label" for="gridCheck">
-                                    Sexo
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Femenina
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Masculino
-                            </label>
-                        </div>
-                        <div class="text-center">
-                        <img src="./Raster.jpg" class="rounded" alt="">
-                      </div>
-                    </form>
-                    <form>
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Particularidad</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                            <small id="emailHelp" class="form-text text-muted">Alguna caracteristica particular
-                            </small>
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="inputState">Subir foto</label>
-                            <input type="file" class="form-control" aria-label="file example" required>
-                            <div class="invalid-feedback">Example invalid form file feedback</div>
-                          </div>
-                        <div> <button type="submit" class="btn btn-primary ">Guardar</button></div>
-            
-                    </form>
-                    
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
-    </main>
-</div>
+
+
+
+        </main>
+    </div>
 @endsection
