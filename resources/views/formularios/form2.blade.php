@@ -1,8 +1,7 @@
 @extends('layouts.master')
 <link rel="stylesheet" href="<?php echo asset('css/f3.css'); ?>" type="text/css">
-<script src="{{ asset('js/Jsmiembro.js') }}"></script>
 @section('content')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ asset('js/Jsmiembro.js') }}"></script>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4 py-4">
@@ -42,14 +41,14 @@
                     </div>
                     <div class="col-xl-5">
                         <div class="card  mb-4" style="border:none; padding-bottom: 25px !important; width: 100%">
-                            <h3 style="padding: -5px 0px !important;">Nuevo Registro</h3>
+                            <h3 style="padding: -5px 0px !important;">Registro miembro</h3>
                             <form action="post">
                                 <div class="row">
                                     <div class="col-xl-6">
                                         <div class="inputContainer">
                                             <input required="required" id="nombre" class="inputField"
                                                 placeholder="Nombres" type="text" autocomplete="false">
-                                            <label class="inputFieldLabel" for="nombre">Nombre del miembro</label>
+                                            <label class="inputFieldLabel" for="nombre">Nombres del miembro</label>
                                             <i class="inputFieldIcon fas fa-user"></i>
                                         </div>
                                     </div>
@@ -67,10 +66,11 @@
                                     <label class="inputFieldLabel" for="fecha">Correo</label>
                                     <i class="inputFieldIcon fas fa-envelope"></i>
                                 </div>
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <div class="inputContainer" id="telefono-container">
-                                            <input class="inputField" type="tel" class="form-control telefono"
+
+                                <div class="row" id="cell">
+                                    <div class="col-xl-6" id="telefono-container">
+                                        <div class="inputContainer" >
+                                            <input class="inputField form-control telefono" type="tel"
                                                 maxlength="9" placeholder="9999-9999" name="telefonos[]"
                                                 oninput="formatPhoneNumber(this)"
                                                 onkeydown="return restrictToNumbers(event)">

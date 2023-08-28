@@ -10,29 +10,27 @@ function formatPhoneNumber(input) {
 $(document).ready(function () {
     $("#add-telefono").click(function () {
         var newTelefonoField = `
-                <div class="row">
-                <div class="col-xl-6">
-                    <div class="inputContainer" id="telefono-container">
-                        <input class="inputField" type="tel" class="form-control telefono"
-                            maxlength="9" placeholder="9999-9999" name="telefonos[]"
-                            oninput="formatPhoneNumber(this)"
-                            onkeydown="return restrictToNumbers(event)">
-                        <label class="inputFieldLabel" for="fecha">Telefono</label>
-                        <i class="inputFieldIcon fas fa-phone"></i>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <button type="reset" class="button button-danger" id="add-telefono">
-                        <i class="svg-icon fas fa-circle-xmark"></i>
-                    </button>
-                </div>
+        <div class="row" id="telefono-container">
+        <div class="col-xl-8">
+            <div class="inputContainer" >
+                <input class="inputField form-control telefono" type="tel"
+                    maxlength="9" placeholder="9999-9999" name="telefonos[]"
+                    oninput="formatPhoneNumber(this)"
+                    onkeydown="return restrictToNumbers(event)">
             </div>
+        </div>
+        <div class="col-xl-3">
+            <button type="button" class="btn btn-danger remove-telefono">
+                <i class="svg-icon fas fa-circle-xmark"></i>
+            </button>
+        </div>
+    </div>
                 `;
         $("#telefono-container").append(newTelefonoField);
     });
 
     // Remover campos agregados dinámicamente
     $("#telefono-container").on("click", ".remove-telefono", function () {
-        $(this).closest(".row.g-2").remove();
+        $(this).closest(".row").remove();
     });
 });
