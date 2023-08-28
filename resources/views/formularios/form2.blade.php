@@ -1,7 +1,8 @@
 @extends('layouts.master')
-<link rel="stylesheet" href="<?php echo asset('css/f3.css'); ?>" type="text/css">
+
 @section('content')
-<script src="{{ asset('js/Jsmiembro.js') }}"></script>
+    <link rel="stylesheet" href="<?php echo asset('css/f3.css'); ?>" type="text/css">
+    <script src="{{ asset('js/Jsmiembro.js') }}"></script>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4 py-4">
@@ -67,14 +68,13 @@
                                     <i class="inputFieldIcon fas fa-envelope"></i>
                                 </div>
 
-                                <div class="row" id="cell">
-                                    <div class="col-xl-6" id="telefono-container">
-                                        <div class="inputContainer" >
-                                            <input class="inputField form-control telefono" type="tel"
-                                                maxlength="9" placeholder="9999-9999" name="telefonos[]"
-                                                oninput="formatPhoneNumber(this)"
-                                                onkeydown="return restrictToNumbers(event)">
-                                            <label class="inputFieldLabel" for="fecha">Telefono</label>
+                                <div class="row" id="telefono-container">
+                                    <div class="col-xl-6">
+                                        <div class="inputContainer">
+                                            <input class="inputField form-control telefono" type="tel" maxlength="18"
+                                                value="+503 " name="telefonos[]" oninput="formatPhoneNumber(this)"
+                                                onkeydown="return restrictToNumbersAndHyphen(event)">
+                                            <label class="inputFieldLabel" for="telefono">Telefono</label>
                                             <i class="inputFieldIcon fas fa-phone"></i>
                                         </div>
                                     </div>
@@ -83,7 +83,9 @@
                                             <i class="svg-icon fas fa-plus"></i>
                                         </button>
                                     </div>
+
                                 </div>
+
 
                                 <div style="display: flex; align-items: flex-end; gap: 10px; justify-content: center">
                                     <button type="reset" class="button button-sec">
